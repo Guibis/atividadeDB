@@ -1,429 +1,328 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amigo Fiel Pet Shop — Sistema de Gestão</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="assets/favicon-16x16.png" />
-    <link rel="icon" type="image/png" href="assets/favicon-32x32.png" />
-  </head>
 
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Fiel Pet Shop — Sistema de Gestão</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="assets/favicon-32x32.png">
+</head>
+
+<body>
     <!-- Sidebar Overlay -->
-    <div
-      class="sidebar-overlay"
-      id="sidebarOverlay"
-      onclick="closeSidebar()"
-    ></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-logo" onclick="navigate('dashboard')">
-        <div class="logo-icon">
-          <img src="assets/amigofiel.png" alt="Logo" />
+        <div class="sidebar-logo" onclick="navigate('dashboard')">
+            <div class="logo-icon"><img src="assets/amigofiel.png" alt="Logo"></div>
+            <div class="logo-text">
+                <h2>Amigo Fiel</h2>
+                <span>Pet Shop</span>
+            </div>
         </div>
-        <div class="logo-text">
-          <h2>Amigo Fiel</h2>
-          <span>Pet Shop</span>
-        </div>
-      </div>
-      <nav class="sidebar-nav">
-        <div class="nav-section">
-          <div class="nav-section-label">Visão Geral</div>
-          <div class="nav-item active" onclick="navigate('dashboard', this)">
-            <span class="icon">📊</span> Dashboard
-          </div>
-        </div>
-        <div class="nav-section">
-          <div class="nav-section-label">Cadastros</div>
-          <div class="nav-item" onclick="navigate('clientes', this)">
-            <span class="icon">👤</span> Clientes
-          </div>
-          <div class="nav-item" onclick="navigate('pets', this)">
-            <span class="icon">🐶</span> Pets
-          </div>
-          <div class="nav-item" onclick="navigate('produtos', this)">
-            <span class="icon">🛒</span> Produtos
-          </div>
-        </div>
-        <div class="nav-section">
-          <div class="nav-section-label">Movimentação</div>
-          <div class="nav-item" onclick="navigate('compras', this)">
-            <span class="icon">💳</span> Compras
-          </div>
-        </div>
-      </nav>
-      <div class="sidebar-footer">
-        v1.0 · Amigo Fiel © <span id="footerYear"></span>
-      </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <div class="nav-section-label">Visão Geral</div>
+                <div class="nav-item active" onclick="navigate('dashboard', this)">
+                    <span class="icon">📊</span> Dashboard
+                </div>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-label">Cadastros</div>
+                <div class="nav-item" onclick="navigate('clientes', this)">
+                    <span class="icon">👤</span> Clientes
+                </div>
+                <div class="nav-item" onclick="navigate('pets', this)">
+                    <span class="icon">🐶</span> Pets
+                </div>
+                <div class="nav-item" onclick="navigate('produtos', this)">
+                    <span class="icon">🛒</span> Produtos
+                </div>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-label">Movimentação</div>
+                <div class="nav-item" onclick="navigate('compras', this)">
+                    <span class="icon">💳</span> Compras
+                </div>
+            </div>
+        </nav>
+        <div class="sidebar-footer">v1.0 · Amigo Fiel © <span id="footerYear"></span></div>
     </aside>
 
     <!-- Topbar -->
     <header class="topbar">
-      <div class="topbar-left">
-        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-        <div class="page-title" id="topbarTitle">🐾 <span>Dashboard</span></div>
-      </div>
-      <div class="topbar-right">
-        <span class="topbar-badge" id="topbarDate"></span>
-      </div>
+        <div class="topbar-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+            <div class="page-title" id="topbarTitle">🐾 <span>Dashboard</span></div>
+        </div>
+        <div class="topbar-right">
+            <span class="topbar-badge" id="topbarDate"></span>
+        </div>
     </header>
 
     <!-- Main Content -->
     <main class="main">
-      <!-- DASHBOARD -->
-      <section class="page active" id="page-dashboard">
-        <div class="stats-grid">
-          <div class="stat-card orange" onclick="navigate('clientes')">
-            <div class="stat-icon">👤</div>
-            <div class="stat-value" id="dash-clientes">0</div>
-            <div class="stat-label">Clientes</div>
-          </div>
-          <div class="stat-card green" onclick="navigate('pets')">
-            <div class="stat-icon">🐶</div>
-            <div class="stat-value" id="dash-pets">0</div>
-            <div class="stat-label">Pets</div>
-          </div>
-          <div class="stat-card teal" onclick="navigate('produtos')">
-            <div class="stat-icon">📦</div>
-            <div class="stat-value" id="dash-produtos">0</div>
-            <div class="stat-label">Produtos</div>
-          </div>
-          <div class="stat-card red" onclick="navigate('compras')">
-            <div class="stat-icon">💳</div>
-            <div class="stat-value" id="dash-compras">0</div>
-            <div class="stat-label">Compras</div>
-          </div>
-        </div>
 
-        <div class="section-header">
-          <div class="section-title">
-            <span class="dot"></span> Últimas Compras
-          </div>
-        </div>
-        <div id="dash-recent-compras"></div>
-      </section>
-
-      <!-- CLIENTES -->
-      <section class="page" id="page-clientes">
-        <div class="section-header">
-          <div class="section-title"><span class="dot"></span> Clientes</div>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap">
-            <div class="search-bar">
-              <span>🔍</span>
-              <input
-                type="text"
-                placeholder="Buscar cliente..."
-                oninput="filterTable('tbl-clientes', this.value)"
-              />
+        <!-- DASHBOARD -->
+        <section class="page active" id="page-dashboard">
+            <div class="stats-grid">
+                <div class="stat-card orange" onclick="navigate('clientes')">
+                    <div class="stat-icon">👤</div>
+                    <div class="stat-value" id="dash-clientes">0</div>
+                    <div class="stat-label">Clientes</div>
+                </div>
+                <div class="stat-card green" onclick="navigate('pets')">
+                    <div class="stat-icon">🐶</div>
+                    <div class="stat-value" id="dash-pets">0</div>
+                    <div class="stat-label">Pets</div>
+                </div>
+                <div class="stat-card teal" onclick="navigate('produtos')">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-value" id="dash-produtos">0</div>
+                    <div class="stat-label">Produtos</div>
+                </div>
+                <div class="stat-card red" onclick="navigate('compras')">
+                    <div class="stat-icon">💳</div>
+                    <div class="stat-value" id="dash-compras">0</div>
+                    <div class="stat-label">Compras</div>
+                </div>
             </div>
-            <button
-              class="btn btn-primary"
-              onclick="openModal('modal-cliente')"
-            >
-              ＋ Novo Cliente
-            </button>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>CPF</th>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th>Pets</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbl-clientes"></tbody>
-          </table>
-          <div class="empty-state" id="empty-clientes" style="display: none">
-            <div class="icon">👤</div>
-            <p>Nenhum cliente cadastrado</p>
-            <small>Clique em "Novo Cliente" para começar</small>
-          </div>
-        </div>
-      </section>
 
-      <!-- PETS -->
-      <section class="page" id="page-pets">
-        <div class="section-header">
-          <div class="section-title"><span class="dot"></span> Pets</div>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap">
-            <div class="search-bar">
-              <span>🔍</span>
-              <input
-                type="text"
-                placeholder="Buscar pet..."
-                oninput="filterTable('tbl-pets', this.value)"
-              />
+            <div class="section-header">
+                <div class="section-title"><span class="dot"></span> Últimas Compras</div>
             </div>
-            <button class="btn btn-primary" onclick="openModal('modal-pet')">
-              ＋ Novo Pet
-            </button>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Animal</th>
-                <th>Nome</th>
-                <th>Raça</th>
-                <th>Dono</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbl-pets"></tbody>
-          </table>
-          <div class="empty-state" id="empty-pets" style="display: none">
-            <div class="icon">🐶</div>
-            <p>Nenhum pet cadastrado</p>
-            <small>Clique em "Novo Pet" para começar</small>
-          </div>
-        </div>
-      </section>
+            <div id="dash-recent-compras"></div>
+        </section>
 
-      <!-- PRODUTOS -->
-      <section class="page" id="page-produtos">
-        <div class="section-header">
-          <div class="section-title"><span class="dot"></span> Produtos</div>
-          <div style="display: flex; gap: 10px; flex-wrap: wrap">
-            <div class="search-bar">
-              <span>🔍</span>
-              <input
-                type="text"
-                placeholder="Buscar produto..."
-                oninput="filterTable('tbl-produtos', this.value)"
-              />
+        <!-- CLIENTES -->
+        <section class="page" id="page-clientes">
+            <div class="section-header">
+                <div class="section-title"><span class="dot"></span> Clientes</div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <div class="search-bar">
+                        <span>🔍</span>
+                        <input type="text" placeholder="Buscar cliente..."
+                            oninput="filterTable('tbl-clientes', this.value)">
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('modal-cliente')">＋ Novo Cliente</button>
+                </div>
             </div>
-            <button
-              class="btn btn-primary"
-              onclick="openModal('modal-produto')"
-            >
-              ＋ Novo Produto
-            </button>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Estoque</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="tbl-produtos"></tbody>
-          </table>
-          <div class="empty-state" id="empty-produtos" style="display: none">
-            <div class="icon">📦</div>
-            <p>Nenhum produto cadastrado</p>
-            <small>Clique em "Novo Produto" para começar</small>
-          </div>
-        </div>
-      </section>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CPF</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Pets</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-clientes"></tbody>
+                </table>
+                <div class="empty-state" id="empty-clientes" style="display:none">
+                    <div class="icon">👤</div>
+                    <p>Nenhum cliente cadastrado</p>
+                    <small>Clique em "Novo Cliente" para começar</small>
+                </div>
+            </div>
+        </section>
 
-      <!-- COMPRAS -->
-      <section class="page" id="page-compras">
-        <div class="section-header">
-          <div class="section-title"><span class="dot"></span> Compras</div>
-          <div class="search-bar">
-            <span>🔍</span>
-            <input
-              type="text"
-              placeholder="Buscar compra..."
-              oninput="filterCompras(this.value)"
-            />
-          </div>
-        </div>
-        <div id="lista-compras"></div>
-        <div class="empty-state" id="empty-compras" style="display: none">
-          <div class="icon">💳</div>
-          <p>Nenhuma compra registrada</p>
-        </div>
-      </section>
+        <!-- PETS -->
+        <section class="page" id="page-pets">
+            <div class="section-header">
+                <div class="section-title"><span class="dot"></span> Pets</div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <div class="search-bar">
+                        <span>🔍</span>
+                        <input type="text" placeholder="Buscar pet..." oninput="filterTable('tbl-pets', this.value)">
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('modal-pet')">＋ Novo Pet</button>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Animal</th>
+                            <th>Nome</th>
+                            <th>Raça</th>
+                            <th>Dono</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-pets"></tbody>
+                </table>
+                <div class="empty-state" id="empty-pets" style="display:none">
+                    <div class="icon">🐶</div>
+                    <p>Nenhum pet cadastrado</p>
+                    <small>Clique em "Novo Pet" para começar</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUTOS -->
+        <section class="page" id="page-produtos">
+            <div class="section-header">
+                <div class="section-title"><span class="dot"></span> Produtos</div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <div class="search-bar">
+                        <span>🔍</span>
+                        <input type="text" placeholder="Buscar produto..."
+                            oninput="filterTable('tbl-produtos', this.value)">
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('modal-produto')">＋ Novo Produto</button>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Estoque</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-produtos"></tbody>
+                </table>
+                <div class="empty-state" id="empty-produtos" style="display:none">
+                    <div class="icon">📦</div>
+                    <p>Nenhum produto cadastrado</p>
+                    <small>Clique em "Novo Produto" para começar</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPRAS -->
+        <section class="page" id="page-compras">
+            <div class="section-header">
+                <div class="section-title"><span class="dot"></span> Compras</div>
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Buscar compra..." oninput="filterCompras(this.value)">
+                </div>
+            </div>
+            <div id="lista-compras"></div>
+            <div class="empty-state" id="empty-compras" style="display:none">
+                <div class="icon">💳</div>
+                <p>Nenhuma compra registrada</p>
+            </div>
+        </section>
+
     </main>
 
     <!-- ── MODALS ── -->
 
     <!-- Modal Cliente -->
     <div class="modal-overlay" id="modal-cliente">
-      <div class="modal">
-        <div class="modal-header">
-          <div class="modal-title">👤 Novo Cliente</div>
-          <button class="modal-close" onclick="closeModal('modal-cliente')">
-            ✕
-          </button>
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">👤 Novo Cliente</div>
+                <button class="modal-close" onclick="closeModal('modal-cliente')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>CPF *</label>
+                    <input type="text" id="cli-cpf" placeholder="000.000.000-00" maxlength="14">
+                </div>
+                <div class="form-group">
+                    <label>Nome Completo *</label>
+                    <input type="text" id="cli-nome" placeholder="Ex: Maria Silva">
+                </div>
+                <div class="form-group">
+                    <label>Telefone *</label>
+                    <input type="text" id="cli-telefone" placeholder="(11) 99999-9999" maxlength="15">
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('modal-cliente')">Cancelar</button>
+                    <button class="btn btn-primary" onclick="salvarCliente()">💾 Salvar</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label>CPF *</label>
-            <input
-              type="text"
-              id="cli-cpf"
-              placeholder="000.000.000-00"
-              maxlength="14"
-            />
-          </div>
-          <div class="form-group">
-            <label>Nome Completo *</label>
-            <input type="text" id="cli-nome" placeholder="Ex: Maria Silva" />
-          </div>
-          <div class="form-group">
-            <label>Telefone *</label>
-            <input
-              type="text"
-              id="cli-telefone"
-              placeholder="(11) 99999-9999"
-              maxlength="15"
-            />
-          </div>
-          <div class="form-actions">
-            <button
-              class="btn btn-secondary"
-              onclick="closeModal('modal-cliente')"
-            >
-              Cancelar
-            </button>
-            <button class="btn btn-primary" onclick="salvarCliente()">
-              💾 Salvar
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Modal Pet -->
     <div class="modal-overlay" id="modal-pet">
-      <div class="modal">
-        <div class="modal-header">
-          <div class="modal-title">🐶 Novo Pet</div>
-          <button class="modal-close" onclick="closeModal('modal-pet')">
-            ✕
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label>Tipo de Animal *</label>
-            <select id="pet-animal">
-              <option value="">Selecione...</option>
-              <option>Cachorro</option>
-              <option>Gato</option>
-              <option>Pássaro</option>
-              <option>Coelho</option>
-              <option>Hamster</option>
-              <option>Outro</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Nome do Pet *</label>
-              <input type="text" id="pet-nome" placeholder="Ex: Rex" />
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">🐶 Novo Pet</div>
+                <button class="modal-close" onclick="closeModal('modal-pet')">✕</button>
             </div>
-            <div class="form-group">
-              <label>Raça</label>
-              <input type="text" id="pet-raca" placeholder="Ex: Labrador" />
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Tipo de Animal *</label>
+                    <select id="pet-animal">
+                        <option value="">Selecione...</option>
+                        <option>Cachorro</option>
+                        <option>Gato</option>
+                        <option>Pássaro</option>
+                        <option>Coelho</option>
+                        <option>Hamster</option>
+                        <option>Outro</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome do Pet *</label>
+                        <input type="text" id="pet-nome" placeholder="Ex: Rex">
+                    </div>
+                    <div class="form-group">
+                        <label>Raça</label>
+                        <input type="text" id="pet-raca" placeholder="Ex: Labrador">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Dono (Cliente) *</label>
+                    <select id="pet-dono"></select>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('modal-pet')">Cancelar</button>
+                    <button class="btn btn-primary" onclick="salvarPet()">💾 Salvar</button>
+                </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label>Dono (Cliente) *</label>
-            <select id="pet-dono"></select>
-          </div>
-          <div class="form-actions">
-            <button class="btn btn-secondary" onclick="closeModal('modal-pet')">
-              Cancelar
-            </button>
-            <button class="btn btn-primary" onclick="salvarPet()">
-              💾 Salvar
-            </button>
-          </div>
         </div>
-      </div>
     </div>
 
     <!-- Modal Produto -->
     <div class="modal-overlay" id="modal-produto">
-      <div class="modal">
-        <div class="modal-header">
-          <div class="modal-title">📦 Novo Produto</div>
-          <button class="modal-close" onclick="closeModal('modal-produto')">
-            ✕
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label>Nome do Produto *</label>
-            <input
-              type="text"
-              id="prod-nome"
-              placeholder="Ex: Ração Premium 5kg"
-            />
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Preço (R$) *</label>
-              <input
-                type="number"
-                id="prod-preco"
-                placeholder="0,00"
-                step="0.01"
-                min="0"
-              />
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">📦 Novo Produto</div>
+                <button class="modal-close" onclick="closeModal('modal-produto')">✕</button>
             </div>
-            <div class="form-group">
-              <label>Estoque *</label>
-              <input type="number" id="prod-estoque" placeholder="0" min="0" />
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nome do Produto *</label>
+                    <input type="text" id="prod-nome" placeholder="Ex: Ração Premium 5kg">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preço (R$) *</label>
+                        <input type="number" id="prod-preco" placeholder="0,00" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Estoque *</label>
+                        <input type="number" id="prod-estoque" placeholder="0" min="0">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('modal-produto')">Cancelar</button>
+                    <button class="btn btn-primary" onclick="salvarProduto()">💾 Salvar</button>
+                </div>
             </div>
-          </div>
-          <div class="form-actions">
-            <button
-              class="btn btn-secondary"
-              onclick="closeModal('modal-produto')"
-            >
-              Cancelar
-            </button>
-            <button class="btn btn-primary" onclick="salvarProduto()">
-              💾 Salvar
-            </button>
-          </div>
         </div>
-      </div>
     </div>
 
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
-    /* ──────────────────────────────────────────────── INTEGRAÇÃO COM MYSQL
-    ──────────────────────────────────────────────── Para conectar ao banco de
-    dados MySQL, substitua as funções de CRUD acima por chamadas fetch()
-    apontando para sua API backend (Node.js / PHP / etc.). Exemplo de estrutura
-    de rota esperada: GET /api/clientes → lista clientes POST /api/clientes → {
-    cpf, nome, telefone } DELETE /api/clientes/:cpf → remove cliente GET
-    /api/pets → lista pets POST /api/pets → { animal, nome, raca, dono_cpf }
-    DELETE /api/pets/:id → remove pet GET /api/produtos → lista produtos POST
-    /api/produtos → { nome, preco, estoque } DELETE /api/produtos/:id → remove
-    produto GET /api/compras → lista compras (com JOIN) Modelo lógico (MySQL):
-    CREATE TABLE Cliente ( CPF VARCHAR(14) PRIMARY KEY, Nome VARCHAR(100) NOT
-    NULL, Telefone VARCHAR(15) ); CREATE TABLE Pets ( id_animal INT
-    AUTO_INCREMENT PRIMARY KEY, Nome VARCHAR(100) NOT NULL, Raca VARCHAR(80),
-    fk_Clientes_id_compra VARCHAR(14), FOREIGN KEY (fk_Clientes_id_compra)
-    REFERENCES Cliente(CPF) ); CREATE TABLE Produtos ( id_produto INT
-    AUTO_INCREMENT PRIMARY KEY, Nome VARCHAR(100) NOT NULL, preco DECIMAL(10,2),
-    qtd_estoque INT ); CREATE TABLE Compra ( id_compra INT AUTO_INCREMENT
-    PRIMARY KEY, data_compra DATE, valor_total DECIMAL(10,2),
-    fk_Clientes_id_cliente VARCHAR(14), FOREIGN KEY (fk_Clientes_id_cliente)
-    REFERENCES Cliente(CPF) ); CREATE TABLE Produtos_Comprados (
-    fk_Compras_id_compra INT, fk_Produtos_id_produto INT, Nome VARCHAR(100),
-    Quantidade INT, Valor DECIMAL(10,2), PRIMARY KEY (fk_Compras_id_compra,
-    fk_Produtos_id_produto), FOREIGN KEY (fk_Compras_id_compra) REFERENCES
-    Compra(id_compra), FOREIGN KEY (fk_Produtos_id_produto) REFERENCES
-    Produtos(id_produto) ); ──────────────────────────────────────────────── */
     <script src="script.js"></script>
-  </body>
+</body>
+
 </html>
