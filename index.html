@@ -41,9 +41,6 @@
                 <div class="nav-item" onclick="navigate('produtos', this)">
                     <span class="icon">🛒</span> Produtos
                 </div>
-            </div>
-            <div class="nav-section">
-                <div class="nav-section-label">Movimentação</div>
                 <div class="nav-item" onclick="navigate('compras', this)">
                     <span class="icon">💳</span> Compras
                 </div>
@@ -203,9 +200,12 @@
         <section class="page" id="page-compras">
             <div class="section-header">
                 <div class="section-title"><span class="dot"></span> Compras</div>
-                <div class="search-bar">
-                    <span>🔍</span>
-                    <input type="text" placeholder="Buscar compra..." oninput="filterCompras(this.value)">
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <div class="search-bar">
+                        <span>🔍</span>
+                        <input type="text" placeholder="Buscar compra..." oninput="filterCompras(this.value)">
+                    </div>
+                    <button class="btn btn-primary" onclick="abrirModalCompra()">＋ Nova Compra</button>
                 </div>
             </div>
             <div id="lista-compras"></div>
@@ -223,7 +223,7 @@
     <div class="modal-overlay" id="modal-cliente">
         <div class="modal">
             <div class="modal-header">
-                <div class="modal-title">👤 Novo Cliente</div>
+                <div class="modal-title" id="modal-cliente-title">👤 Novo Cliente</div>
                 <button class="modal-close" onclick="closeModal('modal-cliente')">✕</button>
             </div>
             <div class="modal-body">
@@ -251,21 +251,22 @@
     <div class="modal-overlay" id="modal-pet">
         <div class="modal">
             <div class="modal-header">
-                <div class="modal-title">🐶 Novo Pet</div>
+                <div class="modal-title" id="modal-pet-title">🐶 Novo Pet</div>
                 <button class="modal-close" onclick="closeModal('modal-pet')">✕</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
                     <label>Tipo de Animal *</label>
-                    <select id="pet-animal">
+                    <select id="pet-animal" onchange="togglePetOutro()">
                         <option value="">Selecione...</option>
                         <option>Cachorro</option>
                         <option>Gato</option>
                         <option>Pássaro</option>
                         <option>Coelho</option>
                         <option>Hamster</option>
-                        <option>Outro</option>
+                        <option value="Outro">Outro</option>
                     </select>
+                    <input type="text" id="pet-animal-outro" placeholder="Qual animal?" style="display:none;margin-top:8px">
                 </div>
                 <div class="form-row">
                     <div class="form-group">
@@ -293,7 +294,7 @@
     <div class="modal-overlay" id="modal-produto">
         <div class="modal">
             <div class="modal-header">
-                <div class="modal-title">📦 Novo Produto</div>
+                <div class="modal-title" id="modal-produto-title">📦 Novo Produto</div>
                 <button class="modal-close" onclick="closeModal('modal-produto')">✕</button>
             </div>
             <div class="modal-body">
@@ -314,6 +315,41 @@
                 <div class="form-actions">
                     <button class="btn btn-secondary" onclick="closeModal('modal-produto')">Cancelar</button>
                     <button class="btn btn-primary" onclick="salvarProduto()">💾 Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Compra -->
+    <div class="modal-overlay" id="modal-compra">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title" id="modal-compra-title">💳 Nova Compra</div>
+                <button class="modal-close" onclick="closeModal('modal-compra')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cliente *</label>
+                        <select id="compra-cliente"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Data *</label>
+                        <input type="date" id="compra-data">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Produtos</label>
+                    <div id="compra-produtos-list"></div>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="addProdutoRow()" style="margin-top:8px">＋ Adicionar Produto</button>
+                </div>
+                <div class="compra-total-display">
+                    <span>Total:</span>
+                    <strong id="compra-total">R$ 0,00</strong>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="closeModal('modal-compra')">Cancelar</button>
+                    <button class="btn btn-primary" onclick="salvarCompra()">💾 Salvar</button>
                 </div>
             </div>
         </div>

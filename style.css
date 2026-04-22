@@ -382,6 +382,15 @@ body {
     background: var(--green-dark);
 }
 
+.btn-edit {
+    background: var(--teal);
+    color: #fff;
+}
+
+.btn-edit:hover {
+    opacity: 0.85;
+}
+
 /* ── SEARCH BAR ── */
 .search-bar {
     display: flex;
@@ -722,6 +731,77 @@ tr:hover td {
     flex-wrap: wrap;
     gap: 6px;
     margin-top: 8px;
+}
+
+.compra-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.compra-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* ── PRODUTO ROW (Compra Modal) ── */
+.produto-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.produto-row select {
+    flex: 2;
+    padding: 9px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    background: var(--cream);
+    outline: none;
+}
+
+.produto-row select:focus {
+    border-color: var(--orange);
+}
+
+.produto-row input {
+    flex: 1;
+    padding: 9px 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    background: var(--cream);
+    outline: none;
+    min-width: 60px;
+}
+
+.produto-row input:focus {
+    border-color: var(--orange);
+}
+
+.compra-total-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: linear-gradient(90deg, #fef0dc, #fff8f0);
+    border-radius: 10px;
+    margin: 16px 0 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.compra-total-display strong {
+    font-family: "Nunito", sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--orange);
 }
 
 /* ── RESPONSIVE ── */
