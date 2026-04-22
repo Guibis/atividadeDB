@@ -413,7 +413,7 @@ body {
     background: var(--card-bg);
     border-radius: var(--radius);
     box-shadow: 0 2px 12px var(--shadow);
-    overflow: hidden;
+    overflow-x: auto;
 }
 
 table {
@@ -763,6 +763,12 @@ tr:hover td {
     td,
     th {
         padding: 10px 12px;
+        font-size: 10px;
+    }
+
+    svg {
+        width: 15px;
+        height: 15px;
     }
 }
 
